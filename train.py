@@ -9,7 +9,7 @@ def train_model():
         data = "Sampled-YD-Object-Detection-2/data.yaml",
         epochs = 40,
         imgsz = 640,
-        mosaic = .5
+        perspective = .0005
         
      
         
