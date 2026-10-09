@@ -16,22 +16,22 @@ git clone[https://github.com/](https://github.com/)<villacarter2-a11y>/<>
 
 *This is likely due to the mallet's unique shape and high contrast compared to the background whereas bottles have a more common shape and are more see through ultimately making it harder for the model to recognize the bottles
 
-*Taking into consideration possible unclear environments such as deserts, bad angles, and poorly positioned bottles/mallets I decided to test data augmentation for specific hyperparameters that would likely help create a model recognize the objects despite poor enviroments. Ex: erasing, hsv_v, hsv_s, and mosaic which all would be useful in helping identify partially covered, blended in or even small objects.
+*Taking into consideration possible unclear environments such as deserts, bad angles, and poorly positioned bottles/mallets I decided to test data augmentation for specific hyperparameters that would likely help create a model recognize the objects despite poor enviroments. Ex: erasing, hsv_h, hsv_v, hsv_s, and mosaic which all would be useful in helping identify partially covered, blended in or even small objects.
 
-*My first iteration was testing the saturation and brightness of the images to create a model that  Keeping the baseline epoch of 40 and imgsze of 640 I tested different values for hsv_v and hsv_s first.
+*My first iteration was testing the saturation and hue of the images to create a model that  Keeping the baseline epoch of 40 and imgsze of 640 I tested different values for hsv_h and hsv_s first.
 
-*Different values for the hyperparameters hsv_v and hsv_s alter image brightness and saturation respectively. By altering image and brightness the model would be able to ignore repeatable characteristics like specific color of training data and focus more on the physical chararcteristics and measurements of an object that would be more transferable to identifying the objects in different environments.
+*Different values for the hyperparameters hsv_h and hsv_s alter image hue and saturation respectively. By altering image and brightness the model would be able to ignore repeatable characteristics like specific color of training data and focus more on the physical chararcteristics and measurements of an object that would be more transferable to identifying the objects in different environments.
 
 *After testing both the upper and lower bounds of hsv_s where the default was .7, I tested values of .3, .5 which ultimately reduced mAP50 scores from the baseline .939 to .928 and .93 respectively (without resulting in any considerable benefit in another evaluation metric).
 
-*After testing a lower bound value of hsv_v at .010 the model performed at an mAP50 of .935. Although, worse than the peak baseline model, the model showed better performance in mAP50-95 and Box(P) by a considerable amount (.625 vs .613 and .954 vs .931 respectively). Not only this, it's performance across each object in these specific areas was higher than its baseline counterpart. Meaning it was not just purely improving one object like the mallet over the bottle.
+*After testing a lower bound value of hsv_h at .010 the model performed at an mAP50 of .935. Although, worse than the peak baseline model, the model showed better performance in mAP50-95 and Box(P) by a considerable amount (.625 vs .613 and .954 vs .931 respectively). Not only this, it's performance across each object in these specific areas was higher than its baseline counterpart. Meaning it was not just purely improving one objects scores like the mallet over the bottle.
 
 *Throughout the process of building and evaluating models, I realized that even after testing multiple combinations of many different hyperparameters such as mosaic, hsv_v, hsv_s, erasing, and imgsz the baseline model retained the highest overall mAP50 score. This is likely due to the dataset already implementing similar features in a balanced variety of different angles, rotations, and clutteredness.
 
 
-*Important note: Since at the beginning the models choose randomized weights the baseline model I refer to was the one that recorded the best overall mAP50 scores (alongside all other metrics as well). The same goes for the model chosen for my end to end machine learning pipeline. It is important to note that other variations of the models outperformed each other 
 
-*To conclude, the model chosen features the hyperparameters epoch = 40, imgse = 640, hsv_v = .010
+
+*To conclude, the model chosen features the hyperparameters epoch = 40, imgsz = 640, hsv_h = .010
 
 
 
@@ -45,4 +45,9 @@ git clone[https://github.com/](https://github.com/)<villacarter2-a11y>/<>
 
 * It is also to be noted that both the baseline and the updated model both underperform when it comes to detecting and classifying bottle objects compared to mallets.
 
-Fianlly, if I were to make any adjustments to the model, I would spend more time working on preprocessing the data into more standardized and groupable properties ensuring that each characteristic and geometric property is trained and tested on. I would also spend time analyzing specific test cases for the bottles in order to hopefully find a pattern or underlying property that makes the model underperform and then tweak my model or data to help combat this.
+Finally, if I were to make any adjustments to the model, I would spend more time working on preprocessing the data into more standardized and groupable properties ensuring that each characteristic and geometric property is trained and tested on. I would also spend time analyzing specific test cases for the bottles in order to hopefully find a pattern or underlying property that makes the model underperform and then tweak my model or data to help combat this.
+
+### Model's Mistakes (false postives/negatives)
+* Key errors observed when looking at my model's mistakes include the model detecting two objects either mallet and/or bottle on zoomedin phtos where a mallet covers most of the screen at an akwardish rotated angle/blur. The model likely struggles with unclear/rotated bigger images because it can be easier for the shape of the object to be unclear. Additionally, some false positives include deetcting unpresent mallets in cluttered areas like sandpits. This is likely due to darker spots in sand and cluttered photos appearing to share some similar features like shape/color to bottles at similar distances.
+
+* Ideas to mitigate problems in the future: since the model seems to do well with medium to small-medium sizes but struggles with larger/stock images at roatated angles/blurs, it may be useful to scale down the photos to allow the shape to be better understood/learned.
