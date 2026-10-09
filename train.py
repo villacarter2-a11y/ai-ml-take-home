@@ -9,7 +9,7 @@ def train_model():
         data = "Sampled-YD-Object-Detection-2/data.yaml",
         epochs = 40,
         imgsz = 640,
-        perspective = .0005
+        hsv_s = .8
         
      
         
