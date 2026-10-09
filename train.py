@@ -8,7 +8,8 @@ def train_model():
     model.train(
         data = "Sampled-YD-Object-Detection-2/data.yaml",
         epochs = 40,
-        imgsz = 418
+        imgsz = 640,
+        mosaic = .5
         
      
         
