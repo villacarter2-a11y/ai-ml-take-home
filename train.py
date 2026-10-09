@@ -7,9 +7,12 @@ def train_model():
 
     model.train(
         data = "Sampled-YD-Object-Detection-2/data.yaml",
-        epochs = 40,
+        epochs = 40, 
         imgsz = 640,
-        hsv_s = .8
+        hsv_v = .010
+
+
+     
         
      
         
