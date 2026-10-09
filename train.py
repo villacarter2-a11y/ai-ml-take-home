@@ -8,7 +8,8 @@ def train_model():
     model.train(
         data = "Sampled-YD-Object-Detection-2/data.yaml",
         epochs = 40,
-        imgsz = 640
+        imgsz = 768
+        
 )
     
 if __name__ == "__main__":
