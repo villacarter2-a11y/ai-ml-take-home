@@ -66,7 +66,7 @@ this program outputs detection results for a video feed of actual objects.
 
 
 
-*To conclude, the model chosen features the hyperparameters epoch = 40, imgsz = 640, hsv_h = .010
+* To conclude, the model chosen features the hyperparameters epoch = 40, imgsz = 640, hsv_h = .010
 
 ## Video Testing
 * When testing the model on a real video ( ~40-45 seconds) I took in my dorm using a black water bottle (as a bottle) and a dish scrubber (as a mallet) I noticed a couple interesting things.
@@ -77,7 +77,7 @@ this program outputs detection results for a video feed of actual objects.
 
 * The model also likely performed worse overall and struggled to detect objects for noticeably long period of time for reasons that are mixture of those above and my movement which likely resulted in many unclear and distorted frames. Also during filming both my ater bottle and outfit were the exact same pitch black which likely made it hard for the model to detect.
 
-*Ideas to eliminate/reduce these erros: By incorporating perhaphs an algorhtm that smooths out frames from videos could be useful to create less distorted images/frames. However, in a rover system where memory and latency is crucial this could also pose some damages (finding a balance could be useful). And overall choices like choosing better representations with more contrast to the background would naturally result in better performance as well.
+* Ideas to eliminate/reduce these erros: By incorporating perhaphs an algorhtm that smooths out frames from videos could be useful to create less distorted images/frames. However, in a rover system where memory and latency is crucial this could also pose some damages (finding a balance could be useful). And overall choices like choosing better representations with more contrast to the background would naturally result in better performance as well.
 
 
 
