@@ -6,8 +6,17 @@ Replace this template with your own. Keep it short: write what a teammate would 
 
 A reviewer should be able to follow this from a fresh clone without asking you anything. Test it yourself in a clean checkout before you submit.
 
-''' bash
-git clone[https://github.com/](https://github.com/)<villacarter2-a11y>/<>
+### Enviroments Used:
+Python Version: 3.12
+Tested Os: Windows 11
+
+```bash
+# clone the repository and install dependencies
+git clone[https://github.com/github.com/villacarter2-a11y/ai-ml-take-home](https://github.com/villacarter2-a11y/ai-ml-take-home)
+cd ai-ml-take-home
+pip install -r requirements.txt
+
+
 
 
 ## 2. Thought process
