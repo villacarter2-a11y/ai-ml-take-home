@@ -19,12 +19,3 @@ The AI used placeholer names and values such as a confidence theshold of .25 whi
 
 Verified the script by ensuring output matched the 0-1 values for coordinates and class ids as the dataset labels do.
 
-## 2. <next use>
-
-**What I asked:**
-
-**What I kept vs. rewrote, and why:**
-
-**What the AI got wrong that I had to catch:**
-
-**How I verified it (for example, checked the metric by hand, ran it on data it hadn't seen):**
