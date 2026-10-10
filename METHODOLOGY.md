@@ -33,6 +33,11 @@ python inference.py Sampled-YD-Object-Detection-2/valid/images output_txts
 
 Where inference.py is the name of the python program, Sampled-YD-Object-Detection-2/valid/images is the path to the set of images with objects to be detected, and output_txts is a folder containing the text files containing object class, box boundaries, and classification confidence
 
+In predict_video.py you can run the program by clicking run or typing
+``` bash
+python predict_video.py
+``` 
+this program outputs detection results for a video feed of actual objects.
 
 
 
@@ -62,6 +67,17 @@ Where inference.py is the name of the python program, Sampled-YD-Object-Detectio
 
 
 *To conclude, the model chosen features the hyperparameters epoch = 40, imgsz = 640, hsv_h = .010
+
+## Video Testing
+* When testing the model on a real video ( ~40-45 seconds) I took in my dorm using a black water bottle (as a bottle) and a dish scrubber (as a mallet) I noticed a couple interesting things.
+
+* In order for the model to consistently detect the object the confidence threshold needed to be lowered. Peak threshold on dataset was .47 which is a step up from the typical .25 baseline. However for the live video feed even a confidence level of .20 struggled with detecting objects for periods at a time.
+
+* The model was better at detecting my black bottle compared to the mallet (scrubber) for likely a couple reasons. The bottle I used macthes closer to those in the dataset with regards to shape. Meanwhile the scrubber is not the most similar to a mallet due to its lack of an upper portion with a hammerhead style shape.
+
+* The model also likely performed worse overall and struggled to detect objects for noticeably long period of time for reasons that are mixture of those above and my movement which likely resulted in many unclear and distorted frames. Also during filming both my ater bottle and outfit were the exact same pitch black which likely made it hard for the model to detect.
+
+*Ideas to eliminate/reduce these erros: By incorporating perhaphs an algorhtm that smooths out frames from videos could be useful to create less distorted images/frames. However, in a rover system where memory and latency is crucial this could also pose some damages (finding a balance could be useful). And overall choices like choosing better representations with more contrast to the background would naturally result in better performance as well.
 
 
 
