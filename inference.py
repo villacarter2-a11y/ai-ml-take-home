@@ -20,7 +20,7 @@ parser.add_argument(
 args = parser.parse_args()
 
 #Load model and set confiddece threshold
-model = YOLO("runs/detect/train-14/weights/best.pt")
+model = YOLO("best.pt")
 CONF_THRESH = .47 # this number comes from the peak f-1 scores which maximizes accuracy and recall
 
 
